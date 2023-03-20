@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace eabwnhm
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int loop = 100;
+            int randomnumber = 0;
+            List<int> firstlist = new List<int>();
+            List<int> secondlist = new List<int>();
+            int check = 0;
+            int checkloop = 0;
+            int innercheckloop = 0;
+            int checking = 0;
+            int dupe = 0;
+            var random = new Random();
+            while (loop != 0)
+            {
+                randomnumber = random.Next(100);
+                firstlist.Add(randomnumber);
+                loop = loop - 1;
+            }
+            Console.WriteLine("This is the list");
+            Console.WriteLine(string.Join(", ", firstlist));
+            while (checkloop == 0)
+            {
+                innercheckloop = 0;
+                checking = 0;
+                dupe = 0;
+                while (innercheckloop == 0)
+                {
+                    if (firstlist[check] == firstlist[checking]) 
+                    {
+                        dupe = dupe + 1;
+                    }
+                    checking = checking + 1;
+                    if (checking == 100)
+                    {
+                        innercheckloop = 2;
+                    }
+                }
+                if (dupe == 1)
+                {
+                    secondlist.Add(firstlist[check]);
+                }
+                check = check + 1;
+                if(check == 100)
+                {
+                    checkloop = 1;
+                }
+            }
+            Console.WriteLine("These are the unique numbers");
+            Console.WriteLine(string.Join(", ", secondlist));
+        }
+        }
+    }
